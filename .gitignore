@@ -185,4 +185,5 @@ FakesAssemblies/
 # MonoDevelop crap
 *.userprefs
 .#*
+.vs
 
