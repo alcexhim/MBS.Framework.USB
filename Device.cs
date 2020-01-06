@@ -116,6 +116,9 @@ namespace LibUSB
 		public void Open ()
 		{
 			mvarHandle = Internal.Methods.libusb_open_device_with_vid_pid (mvarContextHandle, VendorID, ProductID);
+			if (mvarHandle == IntPtr.Zero) {
+				Console.WriteLine ("LibUSB.NET warning: libusb_open_device_with_vid_pid returned NULL");
+			}
 		}
 
 		public void SetConfiguration(int configuration)
