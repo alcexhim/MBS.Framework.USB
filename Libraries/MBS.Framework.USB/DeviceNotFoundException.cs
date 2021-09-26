@@ -1,5 +1,5 @@
 ﻿//
-//  RequestRecipien.cs
+//  Methods.cs
 //
 //  Author:
 //       Mike Becker <alcexhim@gmail.com>
@@ -19,22 +19,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
+using System.Runtime.Serialization;
 
-namespace LibUSB
+namespace MBS.Framework.USB
 {
-	public enum RequestRecipient : byte
+	[Serializable]
+	public class DeviceNotFoundException : UsbException
 	{
-		/** Device */
-		Device = 0x00,
-
-		/** Interface */
-		Interface = 0x01,
-
-		/** Endpoint */
-		Endpoint = 0x02,
-
-		/** Other */
-		Other = 0x03
+		public DeviceNotFoundException() : base() { }
+		protected DeviceNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+		public DeviceNotFoundException(string message) : base(message) { }
+		public DeviceNotFoundException(string message, Exception innerException) : base(message, innerException) { }
 	}
 }
-

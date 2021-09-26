@@ -22,9 +22,9 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace LibUSB
+namespace MBS.Framework.USB
 {
-	public class Context : IDisposable
+	public class UsbContext : IDisposable
 	{
 		private IntPtr mvarHandle = IntPtr.Zero;
 		public IntPtr Handle { get { return mvarHandle; } }
@@ -42,14 +42,14 @@ namespace LibUSB
 			}
 		}
 
-		public Context()
+		public UsbContext()
 		{
-			int retval = Internal.Methods.libusb_init (ref mvarHandle);
+			Internal.Constants.LibUSBError retval = Internal.Methods.libusb_init (ref mvarHandle);
 		}
 
-		public Device[] GetDevices()
+		public UsbDevice[] GetDevices()
 		{
-			List<Device> list = new List<Device> ();
+			List<UsbDevice> list = new List<UsbDevice> ();
 			IntPtr hList = IntPtr.Zero;
 			int count = Internal.Methods.libusb_get_device_list (mvarHandle, ref hList);
 
@@ -60,10 +60,10 @@ namespace LibUSB
 				// IntPtr hDev = new IntPtr ((long)(hList.ToInt64 () + (IntPtr.Size * i)));
 				IntPtr hDev = hDevs[i];
 
-				Internal.Structures.DeviceDescriptor desc = new LibUSB.Internal.Structures.DeviceDescriptor ();
+				Internal.Structures.DeviceDescriptor desc = new MBS.Framework.USB.Internal.Structures.DeviceDescriptor ();
 				Internal.Methods.libusb_get_device_descriptor(hDev, ref desc);
 
-				Device dev = new Device (mvarHandle, desc);
+				UsbDevice dev = new UsbDevice (mvarHandle, desc);
 				/*
 				IntPtr ptr = IntPtr.Zero;
 				dev.Open ();
@@ -83,11 +83,11 @@ namespace LibUSB
 			Marshal.FreeHGlobal (hList);
 			return list.ToArray ();
 		}
-		public Device[] GetDevices(ushort vendorID, ushort productID)
+		public UsbDevice[] GetDevices(ushort vendorID, ushort productID)
 		{
-			List<Device> list = new List<Device> ();
-			Device[] devs = GetDevices ();
-			foreach (Device dev in devs) {
+			List<UsbDevice> list = new List<UsbDevice> ();
+			UsbDevice[] devs = GetDevices ();
+			foreach (UsbDevice dev in devs) {
 				if (dev.VendorID == vendorID && dev.ProductID == productID) {
 					list.Add (dev);
 				}
@@ -108,7 +108,7 @@ namespace LibUSB
 			// free unmanaged resources
 			Internal.Methods.libusb_exit(mvarHandle);
 		}
-		~Context()
+		~UsbContext()
 		{
 			Dispose (false);
 		}

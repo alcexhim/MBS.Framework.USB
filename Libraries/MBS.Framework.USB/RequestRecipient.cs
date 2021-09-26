@@ -1,5 +1,5 @@
 ﻿//
-//  EndpointDirection.cs
+//  RequestRecipien.cs
 //
 //  Author:
 //       Mike Becker <alcexhim@gmail.com>
@@ -20,18 +20,26 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace LibUSB
+namespace MBS.Framework.USB
 {
-	public enum EndpointDirection : byte
+	public enum RequestRecipient : byte
 	{
 		/// <summary>
-		/// Device-to-host
+		/// Device.
 		/// </summary>
-		In = 0x80,
+		Device = 0x00,
 		/// <summary>
-		/// Host-to-device
+		/// Interface.
 		/// </summary>
-		Out = 0x00
+		Interface = 0x01,
+		/// <summary>
+		/// Endpoint.
+		/// </summary>
+		Endpoint = 0x02,
+		/// <summary>
+		/// Other.
+		/// </summary>
+		Other = 0x03
 	}
 }
 

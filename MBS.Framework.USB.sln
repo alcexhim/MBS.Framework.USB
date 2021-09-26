@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibUSB", "LibUSB.csproj", "{00DCDC16-6AC5-4F1A-9485-D60893719080}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Framework.USB", "Libraries\MBS.Framework.USB\MBS.Framework.USB.csproj", "{00DCDC16-6AC5-4F1A-9485-D60893719080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibUSB.TestProject", "Applications\LibUSB.TestProject\LibUSB.TestProject.csproj", "{6141B819-0A41-473A-887B-9D1B50564DF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Framework.USB.TestProject", "Applications\MBS.Framework.USB.TestProject\MBS.Framework.USB.TestProject.csproj", "{6141B819-0A41-473A-887B-9D1B50564DF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{D4E19739-DC71-47FD-B45C-24F3F0102558}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F1514A78-1DEA-4AC7-A172-524584E9037F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,5 +23,9 @@ Global
 		{6141B819-0A41-473A-887B-9D1B50564DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6141B819-0A41-473A-887B-9D1B50564DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6141B819-0A41-473A-887B-9D1B50564DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00DCDC16-6AC5-4F1A-9485-D60893719080} = {F1514A78-1DEA-4AC7-A172-524584E9037F}
+		{6141B819-0A41-473A-887B-9D1B50564DF8} = {D4E19739-DC71-47FD-B45C-24F3F0102558}
 	EndGlobalSection
 EndGlobal

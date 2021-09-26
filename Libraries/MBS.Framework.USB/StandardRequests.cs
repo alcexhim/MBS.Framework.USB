@@ -20,7 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace LibUSB
+namespace MBS.Framework.USB
 {
 	public enum StandardRequests : byte
 	{
